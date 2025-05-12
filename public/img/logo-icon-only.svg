@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Outer circle -->
+  <path
+    fill-rule="evenodd"
+    clip-rule="evenodd"
+    d="M16.0241 32C24.8739 32 32.0481 24.8366 32.0481 16C32.0481 7.16344 24.8739 0 16.0241 0C7.17422 0 0 7.16344 0 16C0 24.8366 7.17422 32 16.0241 32ZM16.0241 28C22.6614 28 28.0421 22.6274 28.0421 16C28.0421 9.37258 22.6614 4 16.0241 4C9.38668 4 4.00601 9.37258 4.00601 16C4.00601 22.6274 9.38668 28 16.0241 28Z"
+    fill="#1E3A8A"
+  />
+  
+  <!-- Book pages with subtle bookmarks -->
+  <g transform="translate(16.5, 16)">
+    <!-- Left page with subtle lines for text -->
+    <path
+      d="M-10,-7 C-6,-8.5 -3,-8.5 0,-6 L0,8 C-3,6.5 -6,6.5 -10,8 L-10,-7 Z"
+      fill="#F9FAFB"
+      stroke="#1E3A8A"
+      stroke-width="1.2"
+    />
+    
+    <!-- Right page with subtle lines for text -->
+    <path
+      d="M0,-6 C3,-8.5 6,-8.5 10,-7 L10,8 C6,6.5 3,6.5 0,8 L0,-6 Z"
+      fill="#F9FAFB"
+      stroke="#1E3A8A"
+      stroke-width="1.2"
+    />
+    
+    <!-- Book spine -->
+    <path
+      d="M0,-6 L0,8"
+      stroke="#1E3A8A"
+      stroke-width="1.2"
+    />
+    
+    <!-- Subtle text lines on left page -->
+    <path d="M-8,-4 L-3,-4" stroke="#3182CE" stroke-width="0.7" opacity="0.6" />
+    <path d="M-8,-2 L-3,-2" stroke="#3182CE" stroke-width="0.7" opacity="0.6" />
+    <path d="M-8,0 L-3,0" stroke="#3182CE" stroke-width="0.7" opacity="0.6" />
+    <path d="M-8,2 L-3,2" stroke="#3182CE" stroke-width="0.7" opacity="0.6" />
+    
+    <!-- Math/formula on right page -->
+    <text x="3" y="-2" font-family="Arial" font-size="3" fill="#1E3A8A">∑</text>
+    <text x="3" y="2" font-family="Arial" font-size="3" fill="#1E3A8A">π</text>
+    
+    <!-- Rising educational elements -->
+    <path
+      d="M-6,-1 C-4,-3 -2,-2 0,-1 C2,-2 4,-3 6,-1"
+      stroke="#F59E0B"
+      stroke-width="1.5"
+      stroke-linecap="round"
+      fill="none"
+    />
+    
+    <!-- Small graphic elements -->
+    <circle cx="-5" cy="-3" r="0.8" fill="#10B981" />
+    <circle cx="5" cy="-3" r="0.8" fill="#F59E0B" />
+    
+    <!-- Bookmark -->
+    <path
+      d="M6.5,-7 L6.5,-2 L8,-3 L9.5,-2 L9.5,-7"
+      fill="#F59E0B"
+      opacity="0.8"
+    />
+  </g>
+</svg>

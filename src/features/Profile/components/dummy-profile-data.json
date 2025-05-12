@@ -1,0 +1,17 @@
+{
+  "name": "Educator",
+  "bio": "xyz is a mathematican and researcher currently continiuing Ph.d in a well known university",
+  "reels": 78,
+  "likes": 78,
+  "views": 78,
+  "profilePicture": "https://via.placeholder.com/112",
+  "profileLink": "learnly.com/test123",
+  "socials": [
+    { "name": "Instagram", "link": "https://www.instagram.com/hailey" },
+    { "name": "Youtube", "link": "https://www.youtube.com/hailey" },
+    { "name": "X", "link": "https://www.x.com/hailey" },
+    { "name": "Facebook", "link": "https://www.facebook.com/hailey" },
+    { "name": "Tiktok", "link": "https://www.tiktok.com/hailey" },
+    { "name": "Twitch", "link": "https://www.twitch.com/hailey" }
+  ]
+}

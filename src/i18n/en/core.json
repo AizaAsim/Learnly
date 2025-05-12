@@ -1,0 +1,144 @@
+{
+  "nav_link_home": "Home",
+  "nav_link_subscribers": "Subscribers",
+  "nav_link_subscriptions": "Subscriptions",
+  "nav_link_saved": "Saved",
+  "nav_link_add_reel": "Add a EduClip",
+  "nav_link_notifications": "Notifications",
+  "nav_link_profile": "Profile",
+  "nav_link_search": "Search",
+  "nav_link_settings": "Settings",
+  "nav_link_signout": "Sign Out",
+  "nav_link_termsOfUse": "Terms of Use",
+  "nav_link_privacyPolicy": "Privacy Policy",
+  "nav_link_helpCenter": "Help Center",
+
+  "header_sign_in": "Sign In",
+
+  "errorBoundary_error_unexpected": "Something Went Wrong",
+  "router_error_notFound": "Page Not Found",
+  "link_copy": "Link copied",
+
+  "subscribeButton": {
+    "subscribe": "Subscribe",
+    "pricePerMonth": {
+      "full": " for $10/month",
+      "short": " for $10/mo"
+    },
+    "ariaLabel": "Subscribe for $10 per month"
+  },
+
+  "subscribers_search_placeholder_plural": "Search {{noOfSubscribers}} learners",
+  "subscribers_search_placeholder_singular": "Search {{noOfSubscribers}} subscriber",
+
+  "empty_subscribers": "Your students will appear here.",
+  "empty_subscriptions": "Educators you subscribe to will appear here.",
+  "empty_billing_history": "You don’t have any transactions.",
+  "empty_blocked_users": "Your blocked users will appear here.",
+  "empty_saved_reels": "You haven’t saved any eduClips yet.",
+
+  "today": "Today",
+  "yesterday": "Yesterday",
+
+  "billing_history": {
+    "invoiceId": "Invoice ID",
+    "card": "Card",
+    "creator": "Educator",
+    "totalUsd": "Total (USD)"
+  },
+
+  "subscription_info": {
+    "status": "Status",
+    "lifetimeSpend": "Lifetime Spend",
+    "billingHistory": "Billing History",
+    "amountPerMonth": "Subscribed at {{amount}} per month.",
+    "monthsSubscribed": "Months Subscribed"
+  },
+
+  "cancel_subscription": {
+    "headline": "Unsubscribe",
+    "description": "Are you sure you want to cancel your subscription? You’ll have exclusive access until <strong>{{expirationDate}}<strong>.",
+    "confirm": "Yes, Cancel Subscription",
+    "cancel": "Stay Subscribed"
+  },
+
+  "cancel_subscription_success": {
+    "headline": "You’ve Unsubscribed",
+    "description": "You’ll still have exclusive access until <strong>{{expirationDate}}<strong>.",
+    "confirm": "Okay"
+  },
+
+  "successful_subscription": {
+    "headline": "You’ve Subscribed",
+    "description": "Congratulations! You now have exclusive access to all of <strong>{{creatorName}}’s</strong> reels.",
+    "button": "View Profile"
+  },
+
+  "resume_subscription_button": "Resume Subscription",
+  "account_deleted_button": "Account Deleted",
+
+  "successful_resume_subscription": {
+    "headline": "Subscription Resumed!",
+    "description": "Congratulations! You now have exclusive access to all of <strong>{{creatorName}}’s</strong> reels.",
+    "button": "View Profile"
+  },
+
+  "report": {
+    "headline": "Report",
+    "description": "Are you sure you want to report this {{type}}?",
+    "confirm": "Yes, Report",
+    "cancel": "Cancel",
+    "reported": "Report submitted",
+    "error": "An error occurred while submitting the report."
+  },
+
+  "account_blocked": "Your account has been blocked. <underline>Learn why your account is blocked and how to resolve it.</underline>",
+
+  "user_blocked": "Blocked",
+
+  "blocked_user": {
+    "headline": "Block User",
+    "description": "This action can’t be undone. Their subscription will be canceled, and they will no longer have the option to resubscribe. If applicable, a prorated refund will be provided for the unused portion of their billing period. You can learn more about blocking users <underline>here</underline>.",
+    "confirm": "Block",
+    "cancel": "Cancel"
+  },
+
+  "complete_payment": "Complete Payment",
+
+  "post_removed": {
+    "headline": "Your Post Was Removed",
+    "description": "We removed your post because it violated our <underline>Content Guidelines</underline>. If you violate our guidelines again, your account may be permanently disabled.",
+    "details": "Post Details",
+    "posted_at": "Posted {{date}} at {{time}}.",
+    "review_button": "Review Our Content Guidelines",
+    "submit_appeal_button": "Submit Appeal"
+  },
+
+  "post_restored": {
+    "headline": "Post Restored",
+    "description": "Your appeal has been processed. After further review, your post has been restored.",
+    "details": "We apologize for any inconvenience this may have caused and appreciate your patience.",
+    "button": "Dismiss"
+  },
+
+  "post_deleted": {
+    "headline": "Post Deleted",
+    "description": "Your appeal has been processed. After further review, it has been determined that your post violates our <underline>Content Guidelines</underline>, and it has been permanently deleted.",
+    "details": "We appreciate your understanding and encourage you to continue creating content in line with our <underline>Content Guidelines</underline>.",
+    "button": "Dismiss"
+  },
+
+  "submit_appeal": {
+    "headline": "Appeal Removal",
+    "description": "Your post will be carefully reviewed again. If it’s determined that your post follows our <underline>Content Guidelines</underline>, it will be restored. If it violates our <underline>Content Guidelines</underline>, it will be permanently deleted and you won’t be able to appeal it again.",
+    "placeholder": "Comment (optional)",
+    "submit": "Submit",
+    "cancel": "Cancel"
+  },
+
+  "appeal_submitted": {
+    "headline": "Appeal Submitted",
+    "description": "You have submitted an appeal and your post is being carefully reviewed again. You will be notified as soon as a decision is made. Appeals are typically processed within 24hrs.",
+    "button": "Dismiss"
+  }
+}

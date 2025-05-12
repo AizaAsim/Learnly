@@ -1,0 +1,19 @@
+{
+  "notifications_empty_text": "Your notifications will appear here.",
+  "notifications_header_menu_clear_all": "Clear All",
+  "firstSubscriber": {
+    "title": "You got your first subscriber!",
+    "subTitle": "purchased a subscription."
+  },
+  "firstSubscriber_notification_modal": {
+    "title": "Congratulations!",
+    "view_button": "View"
+  },
+  "notifications_timeStamps": {
+    "new":"New",
+    "today":"Today",
+    "lastWeek":"Last 7 days",
+    "lastMonth":"Last Month",
+    "older":"Older"
+  }
+}

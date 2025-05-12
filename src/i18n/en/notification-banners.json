@@ -1,0 +1,41 @@
+{
+  "stripe_banner": {
+    "under_verification": {
+      "description": "Your activation is still pending. Visit <strong>Stripe</strong> to check the status of your account.",
+      "button": "Visit Stripe"
+    },
+
+    "missing_before_once_activiated": {
+      "description": "Almost there! Finish setting up your subscription to start accepting payments.",
+      "button": "Activate Subscription"
+    },
+
+    "issue": {
+      "description": "Your account has been deactivated and is no longer publicly visible. You can’t accept new subscriptions. Please visit <strong>Stripe</strong> to resolve this issue and reactivate your account.",
+      "button": "Visit Stripe"
+    },
+
+    "activate_subscription": {
+      "description": "Your profile isn't publicly visible <strong>— activate your subscription</strong> to start accepting payments.",
+      "button": "Activate Subscription"
+    },
+
+    "account_limited": {
+      "description": "Your account has been limited — please <strong>contact support</strong> to resolve this issue.",
+      "button": "Contact Support"
+    },
+
+    "stripe_issue": {
+      "description": "There is an issue with your account. Please visit <strong>Stripe</strong> to resolve this issue by {{deadline}} to avoid deactivation of your account.",
+      "button": "Visit Stripe"
+    },
+
+    "error": {
+      "onboarding_link": "Failed to get onboarding link. Please try again later."
+    }
+  },
+  "payment_failed_banner": {
+    "description": "Your payment to <strong>{{creatorName}}</strong> wasn’t successful — please try again.",
+    "button": "Complete Payment"
+  }
+}

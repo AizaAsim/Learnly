@@ -1,0 +1,88 @@
+{
+  "videoPlayer_text_tip": "Tip",
+  "videoPlayer_text_details": "Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.",
+  "videoPlayer_text_more": "See more",
+  "videoPlayer_text_less": "See less",
+  "videoPlayer_text_shareShareLink": "Share",
+  "videoPlayer_text_closeShareLink": "Close",
+  "videoPlayer_text_copyShareLink": "Copy Link",
+  "videoPlayer_text_tiktokShareLink": "TikTok",
+  "videoPlayer_text_instagramShareLink": "Instagram",
+  "videoPlayer_text_facebookShareLink": "Facebook",
+  "videoPlayer_text_xShareLink": "X",
+  "videoPlayer_text_reportSubmitted": "Report Submitted",
+  "videoPlayer_text_linkCopy": "Link Copied",
+  "videoPlayer_text_report": "Report",
+  "videoPlayer_text_preview": "Preview",
+  "videoPlayer_text_removed": "Removed Post",
+
+  "videoPlayer_modal_title_schedule": "Schedule",
+  "videoPlayer_modal_title_reschedule": "Confirm New Schedule",
+
+  "videoPlayer_toast_schedule_success": "Post scheduled",
+  "videoPlayer_toast_reschedule_success": "Post rescheduled",
+  "videoPlayer_toast_archive_success": "Post saved to archive",
+  "videoPlayer_toast_unarchive_success": "Post unarchived",
+  "videoPlayer_toast_delete_success": "Post deleted",
+
+  "videoPlayer_toast_schedule_error": "Post scheduling failed.",
+  "videoPlayer_toast_reschedule_error": "Post rescheduling failed.",
+  "videoPlayer_toast_archive_error": "Post archiving failed.",
+  "videoPlayer_toast_unarchive_error": "Post unarchiving failed.",
+  "videoPlayer_toast_delete_error": "Post deletion failed.",
+  "videoPlayer_toast_link_copy_failed": "Link copy failed.",
+
+  "videoPlayer_toast_invalid_state": "Invalid state",
+
+  "videoPlayer_guard_publish_title": "Publish",
+  "videoPlayer_guard_publish_subtitle": "Are you sure you want to publish this post? This will make it visible to your learners.",
+  "videoPlayer_guard_publish_confirm": "Publish",
+
+  "videoPlayer_guard_delete_title": "Delete Post",
+  "videoPlayer_guard_delete_subtitle": "Are you sure you want to delete this post? This action cannot be undone.",
+  "videoPlayer_guard_delete_confirm": "Delete",
+
+  "videoPlayer_guard_archive_title": "Archive",
+  "videoPlayer_guard_archive_subtitle": "Are you sure you want to archive this post?",
+  "videoPlayer_guard_archive_confirm": "Archive",
+
+  "videoPlayer_guard_archived_limit_reached_title": "Archive Limit Reached",
+  "videoPlayer_guard_archived_limit_reached_subtitle": "You have 100/100 archived reels.Delete reels to free up space.",
+  "videoPlayer_guard_archived_limit_reached_dismiss": "Dismiss",
+
+  "videoPlayer_guard_unarchive_title": "Unarchive",
+  "videoPlayer_guard_unarchive_subtitle": "Are you sure you want to unarchive this post?",
+  "videoPlayer_guard_unarchive_confirm": "Unarchive",
+
+  "videoPlayer_guard_default_cancel": "Cancel",
+
+  "videoPlayer_menu_btn_edit": "Edit",
+  "videoPlayer_menu_btn_publish": "Publish",
+  "videoPlayer_menu_btn_schedule": "Schedule",
+  "videoPlayer_menu_btn_reschedule": "Reschedule",
+  "videoPlayer_menu_btn_archive": "Archive",
+  "videoPlayer_menu_btn_unarchive": "Unarchive",
+  "videoPlayer_menu_btn_delete": "Delete",
+
+  "videoPlayer_tooltip_like_mine": "You cannot like your own reel",
+  "videoPlayer_tooltip_like": "Like",
+  "videoPlayer_tooltip_unlike": "Unlike",
+
+  "videoPlayer_tooltip_bookmark_mine": "You cannot bookmark your own reel",
+  "videoPlayer_tooltip_bookmark": "Bookmark",
+  "videoPlayer_tooltip_unbookmark": "Remove Bookmark",
+
+  "videoPlayer_toast_bookmark_added": "Bookmark added",
+  "videoPlayer_toast_bookmark_removed": "Bookmark removed",
+
+  "videoPlayer_tooltip_views": "Views",
+
+  "videoPlayer_newSchedule_modal_title": "Confirm New Schedule",
+  "videoPlayer_newSchedule_modal_subtitle": "You post will be published on:",
+  "videoPlayer_newSchedule_modal_reschedule": "Reschedule",
+  "videoPlayer_newSchedule_modal_schedule": "Schedule",
+  "videoPlayer_newSchedule_modal_cancel": "Cancel",
+
+  "videoPlayer_chooseTime_modal_next": "Next"
+
+}

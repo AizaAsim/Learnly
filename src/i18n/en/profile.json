@@ -1,0 +1,33 @@
+{
+  "profile_error_wrongSize": "Max image size is 1gb.",
+  "profile_error_unsupportedImage": "Only .jpg, .jpeg, .png and .webp formats are supported.",
+  "profile_error_notSelected": "No file selected",
+  "profile_error_fileRequired": "Profile image is required",
+
+  "profileImagePicker_text_title": "Add a Photo",
+  "profileImagePicker_text_subtitle": "This will be publicly visible on your profile, you can always change this later.",
+  "profileImagePicker_button_upload": "Choose Photo",
+  "profileImagePicker_button_continue": "Continue",
+  "profileImagePicker_button_cancel": "Cancel",
+  "profileImagePicker_button_change_image": "Change Photo",
+  "profilePage_button_modalOpen": "Open Modal",
+  "profile_text_alt_image": "avatar",
+
+  "profileAddBio": {
+    "title": "Add a Bio",
+    "subtitle": "Tell the world about yourself and the subject you'll be teaching.",
+    "placeholder": "Bio",
+    "button": "Save",
+    "error": "Bio is too long."
+  },
+
+  "deleteAccount": {
+    "title": "Delete Account",
+    "subtitle_user": "Deleting your account is a permanent action that cannot be undone. You can learn more about deleting your account <underline>here</underline>.",
+    "subtitle_creator": "Deleting your account is a permanent action that cannot be undone. Active subscriptions will end at the conclusion of the current billing period, after which your account will no longer be accessible to learners. You can learn more about deleting your account <underline>here</underline>.",
+    "delete_button": "Delete",
+    "cancel_button": "Cancel",
+    "success": "Your account has been deleted.",
+    "error": "Failed to delete your account."
+  }
+}

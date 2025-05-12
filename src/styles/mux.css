@@ -1,0 +1,96 @@
+.swiper-slide {
+  height: auto !important;
+}
+
+mux-player {
+  /* Target a specific section by prefixing the CSS var with (top|center|bottom) */
+  --bottom-play-button: none;
+  --bottom-quality-button: none;
+  --bottom-settings-button: none;
+  --bottom-pip-button: none;
+  --bottom-fullscreen-button: none;
+  --bottom-cast-button: none;
+  --volume-range: none;
+  --volume-control: none;
+  --volume-button: none;
+  --seek-backward-button: none;
+  --seek-forward-button: none;
+  min-height: 100dvh;
+  height: 100%;
+  max-width: 100dvw;
+  width: 100%;
+}
+mux-player::part(control-bar) {
+  display: none;
+}
+
+mux-player::part(center play button) {
+  display: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0);
+  --media-icon-color: rgba(255, 255, 255, 0.7);
+}
+
+mux-player::part(poster img) {
+  object-fit: contain;
+  min-height: 100dvh;
+  height: 100%;
+  max-width: 100%;
+  width: 100%;
+}
+
+mux-player::part(bottom time range) {
+  position: fixed;
+  border-radius: 10px;
+  bottom: 68px;
+  margin: 0 16px 0 16px;
+  max-width: calc(min(100dvw, 100%) - 32px);
+  --media-range-track-height: 6px;
+  height: 6px;
+  --media-range-thumb-width: 10px;
+  --media-range-thumb-height: 10px;
+  --media-range-thumb-border-radius: 10px;
+  --media-range-thumb-background: radial-gradient(
+    circle,
+    white 80%,
+    white 60%,
+    black
+  );
+
+  /* Filled of progress bar */
+  --media-range-bar-color: rgba(255, 255, 255, 60%);
+  /* Background of progress bar */
+  --media-time-range-buffered-color: rgba(0, 0, 0, 40%);
+
+  /* Background of progress bar */
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.85) 0%,
+    rgba(255, 255, 255, 0.85) 2%,
+    rgba(255, 255, 255, 0.3) 2%,
+    rgba(255, 255, 255, 0.3) 98%,
+    rgba(255, 255, 255, 0.3) 98%,
+    rgba(255, 255, 255, 0.3) 100%
+  );
+
+  --media-preview-background: none;
+  --media-preview-time-display-color: white;
+  --media-preview-font-size: 18px;
+  --media-preview-padding: 4px;
+  --media-preview-border-radius: 9px;
+
+  --media-text-color: white;
+
+  --media-preview-thumbnail-border: 2px solid rgba(255, 255, 255, 0.16);
+  --media-preview-thumbnail-border-radius: 9px;
+  --media-preview-thumbnail-background: rgba(255, 255, 255, 0.16);
+  --media-preview-thumbnail-margin: 0;
+  --media-preview-thumbnail-padding: 0;
+
+  --media-box-arrow-background: rgba(0, 0, 0, 0);
+}
+
+/* The 2 below are just hard to target for no reason */
+mux-player::part(bottom button) {
+  display: none;
+}

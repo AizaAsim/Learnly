@@ -1,0 +1,113 @@
+{
+    "settings_text_editProfile": "Edit Profile",
+    "settings_text_notifications":"Notification Preferences",
+    "settings_text_accountRecovery":"Account Recovery",
+    "settings_text_subscriptionPrice":"Subscription Price",
+    "settings_text_muted":"Muted List",
+    "settings_text_blocked":"Blocked List",
+    "settings_text_signOut":"Sign Out",
+    "settings_text_deleteAccount":"Delete Account",
+    "settings_text_transactions":"Transactions",
+    "settings_text_subscriptions":"Subscriptions",
+    
+    "settings_text_paymentMethod":"Payment Method",
+    "settings_text_billingHistory":"Billing History",
+    
+    "settings_text_manage_subscription":"Manage Subscription",
+    "settings_text_socials": "Connect Socials",
+
+    "settings_toast_emailUpdated": "Email updated.",
+
+    "notification_setting": {
+        "productsUpdates": "Product Updates",
+        "newsletters" : "Newsletter",
+        "newPosts" : "New Posts",
+        "creatorUpdates" : "Educator Updates",
+        "newSubscribers": "New Subscribers"
+    },
+
+    "settings_editProfile_displayName": "Display Name",
+    "settings_editProfile_Name":"Name",
+    "settings_editProfile_username": "Username",
+    "settings_editProfile_email": "Email",
+    "settings_editProfile_bio": "Bio",
+    "settings_editProfileForm_button_submit": "Save Changes",
+    "settings_editProfileForm_error_nameRequired": "Name is required",
+    "settings_editProfileForm_error_usernameRequired": "Username is required",
+    "settings_editProfileForm_error_emailInvalid": "Please enter a valid email address",
+    "settings_editProfileForm_error_charactersLimitReached": "Bio is too long",
+    "settings_editProfileForm_error_nameAlreadyExists": "Name taken",
+    "settings_editProfileForm_error_usernameAlreadyExists": "Username taken",
+    "settings_editProfileForm_error_emailAlreadyExists": "Email taken",
+    "settings_editProfileForm_success": "Changes saved",
+    "settings_editProfileForm_success_emailVerification": "Profile updated successfully. Please verify your email address",
+
+    "settings_editProfile_profileImagePicker_text_title": "Change Photo",
+    "settings_editProfile_profileImagePicker_button_upload": "Upload New Photo",
+
+    "settings_accountRecovery_description": "Add a backup phone number or email address in case you lose access to your primary email address.",
+    "settings_accountRecovery_email": "Email Address",
+    "settings_accountRecovery_phone": "Phone Number",
+
+
+    "checkEmailInbox_modal": {
+        "title": "Check Your Inbox",
+        "description": "A confirmation email has been sent to {{email}}.",
+        "secondary_description": "If it doesn’t arrive in a few minutes, you can resend the confirmation link or <underline>change your email address.</underline>",
+        "button": "Resend",
+        "button_with_time": "Resend in {{time}}s ..."
+    },
+
+    "updateEmail_modal": {
+        "title": "Change Email",
+        "description": "For your security, you must verify your existing email address before making any changes to your account.",
+        "button_update": "Send a Code",
+        "button_cancel": "Cancel"
+    },
+
+    "otpVerification_modal": {
+        "title": "Verify Your Email",
+        "description": "Enter the temporary 6-digit code we sent to <strong>{{email}}.</strong>",
+        "newEmail_title": "Verify New Email",
+        "newEmail_description": "Enter the temporary 6-digit code we sent to <strong>{{email}}.</strong>"
+    },
+
+    "newEmail_modal": {
+        "title": "Update Email",
+        "description": "Enter the new email address you'd like to use for your account.",
+        "placeholder": "Email address",
+        "button": "Confirm",
+        "error_invalidEmail": "Invalid email address.",
+        "error_alreadyExists": "An account already exists for this email."
+    },
+
+    "recoveryMethod_modal": {
+        "title": "Your Recovery {{method}}",
+        "title_update": "Update Recovery {{method}}",
+        "description": "Add {{method}} to backup and secure your account.",
+        "description_update": "Add {{method}} to backup and secure your account.",
+        "placeholder_phone": "(000) 000-0000",
+        "placeholder_email": "Email address",
+        "error_invalidEmail": "Invalid email address.",
+        "error_invalidPhone": "Invalid phone number.",
+        "button_continue": "Continue",
+        "button_update": "Update"
+    },
+    
+    "recoveryMethodVerification_modal": {
+        "title": "Verify Recovery Method",
+        "description": "Enter the temporary 6-digit code we sent to <strong>{{value}}.<strong>"
+    },
+
+    "settings_subscription": {
+        "price": "Price",
+        "learners": "Subscribers",
+        "payout_methods": "Payout Methods",
+        "payouts": "Payouts",
+        "deactivate": "Deactivate"
+    },
+    
+    "settings_socials": {
+        "description":"Connect your social accounts to verify your identity. This helps your fans know its you." 
+    }
+}

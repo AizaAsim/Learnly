@@ -1,0 +1,31 @@
+{
+  "checkout": {
+    "headline": "Subscribe to unlock and watch all of <strong>{{creatorName}}'s</strong> EduClips full of knowledge!",
+
+    "features": {
+      "1": "Unlock EduClips",
+      "2": "Enjoy Ad-Free Education",
+      "3": "Show your support"
+    },
+
+    "button_text": "Subscribe for $10/month",
+    "button_text_processing": "Processing...",
+
+    "note": "By clicking \"Subscribe\" and making a purchase, you agree to Learnly's <customlink href={{termsOfUseLink}}>Terms of Use</customlink> and <customlink href={{privacyPolicyLink}}>Privacy Policy</customlink>. This subscription automatically renews monthly. You can cancel your subscription at any time in settings.",
+    "different_card_button": "Use a different card",
+    "save_card_button": "Use a saved card",
+
+    "already_subscribed": "Already a learner",
+    "user_blocked": "Blocked by educator"
+  },
+
+  "cardHolder_placeholder": "Cardholder Name",
+
+  "updatePaymentMethod": {
+    "save_button": "Save Card",
+    "update_button": "Update Card",
+    "cancel_button": "Cancel"
+  },
+
+  "creator_not_found": "Educator not found"
+}

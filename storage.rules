@@ -1,0 +1,51 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    // ** HELPER FUNCTIONS
+
+    function isOwner(userId) {
+      return request.auth.uid == userId;
+    }
+
+    function isAdmin() {
+      return request.auth.token.role == 'admin';
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function maxSizeMb(sizeInMb) {
+      return request.resource.size < (sizeInMb * 1024 * 1024);
+    }
+
+    // ** STORAGE RULES
+
+    // Allow admins to access everything
+    // TODO: Add more granular rules
+    match /{allPaths=**} {
+      allow read, write: if isAdmin();
+    }
+
+    // ** USERS
+    match /users/{userId} {
+      // ** IMAGES
+      match /images/avatars/{allPaths=**} {
+        allow read: if true;
+        allow write: if isOwner(userId) && maxSizeMb(5);
+        allow delete: if isOwner(userId);
+      }
+    }
+
+    // ** CREATORS
+    match /creators/{userId} {
+      // ** IMAGES
+      match /images/avatars/{allPaths=**} {
+        allow read: if true;
+        allow write: if isOwner(userId) && maxSizeMb(5);
+        allow delete: if isOwner(userId);
+      }
+    }
+  }
+}

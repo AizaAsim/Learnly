@@ -1,0 +1,212 @@
+@import "./fonts.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-border antialiased;
+  }
+
+  body {
+    overscroll-behavior-x: none;
+  }
+
+  #root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  :root {
+    --text: rgb(13, 13, 13);
+
+    --background: #f9f9f9;
+    --foreground: 222.2 84% 4.9%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: ;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --ring: 215 20.2% 65.1%;
+
+    --radius: 0.5rem;
+
+    --grayscale-2: #00000005;
+    --grayscale-4: #0000000a;
+    --grayscale-6: #0000000f;
+    --grayscale-8: #00000014;
+    --grayscale-12: #0000001f;
+    --grayscale-14: #00000024;
+    --grayscale-16: #00000029;
+    --grayscale-20: #00000033;
+    --grayscale-24: #0000003d;
+    --grayscale-30: #0000004d;
+    --grayscale-40: #00000066;
+    --grayscale-50: #00000080;
+    --grayscale-60: #00000099;
+    --grayscale-70: #000000b3;
+    --grayscale-80: #000000cc;
+    --grayscale-84: #000000d6;
+    --grayscale-90: #000000e6;
+    --grayscale-100: #000000;
+
+    --light-100: #ffffff;
+    --light-90: #ffffffe6;
+    --light-80: #ffffffcc;
+    --light-70: #ffffffb3;
+    --light-60: #ffffff99;
+    --light-50: #ffffff80;
+    --light-40: #ffffff66;
+    --light-30: #ffffff4d;
+    --light-24: #ffffff3d;
+    --light-20: #ffffff33;
+    --light-16: #ffffff29;
+    --light-12: #ffffff1f;
+    --light-8: #ffffff14;
+    --light-4: #ffffff0a;
+
+    --red: #eb323b;
+    --red-d1: #c7232c;
+    --red-d2: #ad1f26;
+    --red-l1: #e3636a;
+    --red-t50: #ed9b9f;
+    --red-t30: #f5c4c6;
+    --red-t10: #dc38401a;
+    --red-t4: #bc38400a;
+
+    --green: #53c94f;
+    --green-d1: #3ab036;
+    --green-d2: #2d892a;
+    --green-t50: #a9e4a7;
+    --green-t10: #edf9ed;
+    --green-l2: #e8f7e8;
+
+    --yellow: #ffd762;
+    --yellow-d1: #f5b700;
+    --yellow-d2: #d6a000;
+    --yellow-t50: #ffebb0;
+    --yellow-t20: #ffd76233;
+
+    --orange: #ff8d29;
+    --orange-d1: #e06900;
+    --orange-t20: #ff983d33;
+    --orange-t50: #ff953880;
+
+    --blue: #1d77ff;
+    --blue-d1: #0046ad;
+    --violet: #7f40e6;
+  }
+
+  .dark {
+    --text: #f9f9f9;
+
+    --background: #212121;
+    --foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: ;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 85.7% 97.3%;
+
+    --ring: 217.2 32.6% 17.5%;
+
+    --grayscale-4: #0a0a0a;
+    --grayscale-8: #141414;
+    --grayscale-12: #1f1f1f;
+    --grayscale-14: #1d1d1f;
+    --grayscale-16: #292929;
+    --grayscale-20: #333333;
+    --grayscale-24: #3d3d3d;
+    --grayscale-30: #4c4c4c;
+    --grayscale-40: #666666;
+    --grayscale-50: #808080;
+    --grayscale-60: #999999;
+    --grayscale-70: #b2b2b2;
+    --grayscale-80: #cccccc;
+    --grayscale-84: #e8e8ed;
+    --grayscale-90: #e5e5e5;
+    --grayscale-100: #ffffff;
+  }
+
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--text);
+    background-color: var(--background);
+  }
+
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+.firebase-emulator-warning {
+  display: none;
+}
+
+/* Make horizontal lines plan instead of dash in chart grid */
+.recharts-cartesian-grid-horizontal line {
+  stroke-dasharray: none;
+}
+
+/* Remove autofill background color in input fields */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px #f5f5f5 inset;
+  transition: background-color 5000s ease-in-out 0s;
+}

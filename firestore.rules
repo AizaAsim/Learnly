@@ -1,0 +1,452 @@
+rules_version = '2';
+
+service cloud.firestore {
+
+  // These firestore.rules files easily get chaotic and hard to maintain.
+  // To address this, we are grouping a collection's rules and validation functions together.
+  // Common helper functions are kept at the top of the file.
+
+  match /databases/{database}/documents {
+
+    // ** HELPER FUNCTIONS
+    function isOwner(req, userId) {
+      return req.auth.uid == userId;
+    }
+
+    function isAdmin(req) {
+      return req.auth.token.role == 'admin';
+    }
+
+    function isRole(req, role) {
+      return req.auth.token.role == role;
+    }
+
+    function isSignedIn(req) {
+      return req.auth != null;
+    }
+
+    function isOwnerOrAdmin(req, userId) {
+      return isOwner(req, userId) || isAdmin(req);
+    }
+
+    function isValidTimestampField(ts) {
+      return 
+      (ts is map && ts.keys().hasAll(['_seconds', '_nanoseconds']) &&
+      ts._seconds is number && ts._nanoseconds is number) || 
+      (ts is timestamp);
+    }
+    // ** END OF HELPER FUNCTIONS
+
+
+    // ** USERS COLLECTION + VALIDATION FUNCTIONS
+    function isValidUserObject(req) {
+      return req.resource.data.keys().hasAll(['id', 'role']) &&
+      req.resource.data.id is string &&
+      req.resource.data.role is string &&
+      req.resource.data.role in ['user', 'creator']// Check role is valid
+    }
+
+    function isValidUserPrivateInfoObject(req) {
+      return req.resource.data.keys().hasAll(['email']) && // Check required 'email' field
+      req.resource.data.email is string &&         // Ensure 'email' is a string
+      req.resource.data.email.matches('^\\S+@\\S+\\.\\S+$') // Validate basic email format
+    }
+
+    function isValidUserNotificationSettingsObject(req) {
+      return req.resource.data.keys().hasAll([
+      'productsUpdates',
+      'newsletters',
+      'newPosts',
+      'creatorUpdates'
+      ]) &&
+      req.resource.data.keys().hasOnly([
+      'productsUpdates',
+      'newsletters',
+      'newPosts',
+      'creatorUpdates'
+      ]) &&
+      req.resource.data.productsUpdates is bool &&
+      req.resource.data.newsletters is bool &&
+      req.resource.data.newPosts is bool &&
+      req.resource.data.creatorUpdates is bool;
+    }
+
+    function isValidCreatorNotificationSettingsObject(req) {
+      return req.resource.data.keys().hasAll(['newSubscribers']) &&
+      req.resource.data.keys().hasOnly(['newSubscribers']) &&
+      req.resource.data.newSubscribers is bool;
+    }
+
+    function isValidNotificationSettingsObject(req) {
+      return isRole(req, 'user') 
+      ? isValidUserNotificationSettingsObject(req)
+      : isValidCreatorNotificationSettingsObject(req);
+    }
+
+
+    function isValidNotificationObject(req) {
+      return req.resource.data.keys().hasAll(['id', 'title', 'sentAt']) &&
+      req.resource.data.id is string &&
+      req.resource.data.title is string &&
+      req.resource.data.sentAt is timestamp &&
+      (!req.resource.data.keys().hasAny(['message']) || req.resource.data.message is string) &&
+      (!req.resource.data.keys().hasAny(['icon']) || req.resource.data.icon is string) &&
+      (!req.resource.data.keys().hasAny(['readAt']) || req.resource.data.readAt is timestamp) &&
+      (!req.resource.data.keys().hasAny(['data']) || req.resource.data.data is map);
+    }
+
+    match /users/{userId} {
+      allow read: if isSignedIn(request);
+      allow create: if isOwner(request, userId) && isValidUserObject(request);
+      allow update: if isOwner(request, userId) && isValidUserObject(request) 
+      // Do not allow updating isBlocked field
+        && (!request.resource.data.diff(resource.data).affectedKeys()
+      .hasAny(['isBlocked']));
+      allow delete: if false;
+
+      match /private/info {
+        allow read: if isOwner(request, userId);
+        allow write: if isOwner(request, userId) && isValidUserPrivateInfoObject(request);
+      }
+
+      match /settings/notifications {
+        allow read: if isOwner(request, userId);
+        // Creation/Initialization is done inside user document creation trigger
+        allow create: if false;
+        allow update: if isOwner(request, userId) && isValidNotificationSettingsObject(request);
+        allow delete: if false;
+      }
+
+      match /notifications/{allPaths=**} {
+        allow read: if isOwner(request, userId);
+        allow write: if isOwner(request, userId) && isValidNotificationObject(request);
+        allow delete: if isOwner(request, userId);
+      }
+    }
+    // ** END OF USERS COLLECTION
+
+
+    // ** REELS COLLECTION + VALIDATION FUNCTIONS
+    function isValidReelType(type) {
+      return type in ['draft', 'scheduled', 'active', 'archived', 'deleted', 'temp', 'cancelled'];
+    }
+
+    function isValidBaseReel(reel) {
+      return reel.keys().hasAll([
+      'id',
+      'creatorId',
+      'status',
+      'type',
+      'uploaded_at'
+      ]) &&
+      reel.id is string &&
+      reel.creatorId is string &&
+      reel.status is string &&
+      reel.type is string &&
+      reel.uploaded_at is number &&
+      isValidReelType(reel.type);
+    }
+
+    function isValidUploadedReel(reel) {
+      return reel.keys().hasAll([
+      'aspect',
+      'assetId',
+      'duration',
+      'fileHash'
+      ]) &&
+      reel.aspect is string &&
+      reel.assetId is string &&
+      reel.duration is number &&
+      reel.fileHash is string &&
+      // Optional fields
+      (!('thumbnail' in reel) || reel.thumbnail is string) &&
+      (!('likes' in reel) || reel.likes is number) &&
+      (!('bookmarks' in reel) || reel.bookmarks is number) &&
+      (!('views' in reel) || reel.views is number) &&
+      (!('description' in reel) || reel.description is string) &&
+      (!('link' in reel) || reel.link is string);
+    }
+
+    function isValidTempReel(reel) {
+      return isValidBaseReel(reel)
+        && reel.type == 'temp';
+    }
+
+    function isValidCancelledReel(reel) {
+      return isValidBaseReel(reel)
+        && reel.type == 'cancelled';
+    }
+
+    function isValidDraftReel(reel) {
+      return isValidBaseReel(reel)
+        && isValidUploadedReel(reel)
+        && reel.type == 'draft';
+    }
+
+    function isValidScheduledReel(reel) {
+      return isValidBaseReel(reel)
+        && isValidUploadedReel(reel)
+        && reel.type == 'scheduled'
+        && isValidTimestampField(reel.scheduledAt);
+    }
+
+    function isValidArchivedReel(reel) {
+      return isValidBaseReel(reel)
+        && isValidUploadedReel(reel)
+        && reel.type == 'archived'
+        && isValidTimestampField(reel.archivedAt);
+    }
+
+    function isValidDeletedReel(reel) {
+      return isValidBaseReel(reel)
+        && isValidUploadedReel(reel)
+        && reel.type == 'deleted'
+        && isValidTimestampField(reel.deletedAt);
+    }
+
+    function isValidActiveReel(reel) {
+      return isValidBaseReel(reel)
+        && isValidUploadedReel(reel)
+        && reel.type == 'active'
+        && isValidTimestampField(reel.publishedAt);
+    }
+
+    // We can map the reel type to the validation function.
+    // This way we can easily validate the reel object based on its type.
+    function isValidReelObject(reel) {
+      return {
+      'temp': isValidTempReel(reel),
+      'draft': isValidDraftReel(reel),
+      'cancelled': isValidCancelledReel(reel),
+      'scheduled': isValidScheduledReel(reel),
+      'active': isValidActiveReel(reel),
+      'archived': isValidArchivedReel(reel),
+      'deleted': isValidDeletedReel(reel),
+      }[reel.type];
+  }
+
+  match /reels/{reelId} {
+    allow read: if isOwner(request, resource.data.creatorId);
+    allow write: if isOwner(request, resource.data.creatorId) && isValidReelObject(resource.data);
+  }
+  // ** END OF REELS
+
+
+  // ** CREATOR SUBSCRIPTIONS COLLECTION + VALIDATION FUNCTIONS
+  function isValidCreatorSubscriptionObject(req) {
+    let hasRequiredKeys = req.resource.data.keys().hasAll([
+    'creatorUid',
+    'subscriptionPrice'
+    ]);
+
+    let isFieldTypesCorrect = 
+    req.resource.data.creatorUid is string &&
+    req.resource.data.subscriptionPrice is number;
+
+    let isValidPriceRange = req.resource.data.subscriptionPrice >= 4.99 && req.resource.data.subscriptionPrice <= 49.99;
+
+    let isPriceFormatValid = 
+    req.resource.data.subscriptionPrice % 1 == 0 ||
+    (req.resource.data.subscriptionPrice * 100) % 100 == 99;
+
+    return hasRequiredKeys && isFieldTypesCorrect && isValidPriceRange && isPriceFormatValid;
+  }
+
+  match /creators_subscriptions/{subscriptionId} {
+    allow read: if isSignedIn(request);
+    allow create: if isRole(request, 'creator') && isValidCreatorSubscriptionObject(request);
+    allow update: if isOwner(request, request.resource.data.creatorUid) && isValidCreatorSubscriptionObject(request);
+  }
+  // ** END OF CREATOR SUBSCRIPTIONS
+
+
+  // ** INTERACTIONS COLLECTIONS + VALIDATION FUNCTIONS
+  function isValidInteractionObject(request) {
+    return request.resource.data.keys().hasAll([
+    'videoId',
+    'userId',
+    'creatorId',
+    'target',
+    'deleted',
+    'createdAt',
+    'updatedAt'
+    ]) &&
+    request.resource.data.videoId is string &&
+    request.resource.data.userId is string &&
+    request.resource.data.creatorId is string &&
+    request.resource.data.target is string &&
+    request.resource.data.deleted is bool &&
+    request.resource.data.createdAt is timestamp &&
+    request.resource.data.updatedAt is timestamp &&
+    request.resource.data.target == 'reels/' + request.resource.data.videoId &&
+    request.resource.id == request.resource.data.userId + '_' + request.resource.data.videoId;
+  }
+
+  match /likes/{likeId} {
+    allow read: if isSignedIn(request);
+    // creator cannot like his own video
+    allow create: if isSignedIn(request) && !isOwner(request, request.resource.data.creatorId) && isValidInteractionObject(request);
+    allow update: if isSignedIn(request) && isOwner(request, resource.data.userId) && isValidInteractionObject(request);
+    allow delete: if false;
+  }
+
+  match /bookmarks/{bookmarkId} {
+    allow read: if isOwner(request, resource.data.userId);
+    allow create: if isSignedIn(request) && isValidInteractionObject(request);
+    allow update: if isSignedIn(request) && isOwner(request, resource.data.userId) && isValidInteractionObject(request);
+    allow delete: if false;
+  }
+  // ** END OF INTERACTIONS
+
+
+  // TODO: EVERYTHING BELOW THIS LINE IS MISSING VALIDATION FUNCTIONS - FIX THIS
+
+
+  // ** OTP COLLECTION + VALIDATION FUNCTIONS
+  match /userVerificationCodes/{otpId} {
+    allow read, write: if false;
+  }
+  // ** END OF OTP COLLECTION
+
+
+  // ** USERS SUBSCRIPTIONS COLLECTION + VALIDATION FUNCTIONS
+  match /users_subscriptions/{subscriptionId} {
+    allow read: if isOwnerOrAdmin(request, resource.data.creatorUid) || isOwner(request, resource.data.subscriberUid);
+    allow write: if false;
+  }
+  // ** END OF USERS SUBSCRIPTIONS
+
+
+  // ** SUBSCRIBERS COLLECTION + VALIDATION FUNCTIONS
+  match /learners/{subscriberId} {
+    allow read: if isOwnerOrAdmin(request, resource.data.creatorId) || isOwner(request, resource.data.subscriberId);
+    allow write: if false;
+  }
+  // ** END OF SUBSCRIBERS
+
+
+  // ** BLOCKED USERS COLLECTION + VALIDATION FUNCTIONS
+  match /blocked_users/{id} {
+    allow read: if isOwnerOrAdmin(request, resource.data.creatorId) || isOwner(request, resource.data.userId);
+    allow write: if false;
+  }
+  // ** END OF BLOCKED USERS
+
+
+  // ** STRIPE COLLECTION + VALIDATION FUNCTIONS
+  match /stripe/{userId} {
+    allow read: if true;
+    // Only allow creator to update hasShownActivationModal field
+    allow update: if isRole(request, 'creator') && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['hasShownActivationModal']);
+  }
+  // ** END OF STRIPE
+
+
+  // ** STRIPE USERS COLLECTION + VALIDATION FUNCTIONS
+  match /stripe_users/{userId} {
+    allow read: if isOwnerOrAdmin(request, userId);
+    allow write: if false;
+
+    match /stripe_customers/{customerId} {
+      allow read: if isOwnerOrAdmin(request, userId);
+      allow write: if false;
+    }
+
+    match /payment_methods/{customerId} {
+      allow read: if isOwnerOrAdmin(request, userId);
+      allow write: if false;
+    }
+  }
+  // ** END OF STRIPE USERS
+
+
+  // ** STRIPE CUSTOMERS COLLECTION + VALIDATION FUNCTIONS
+  match /stripe_customers/{userId} {
+    allow read: if isOwnerOrAdmin(request, userId);
+    allow write: if false;
+  }
+  // ** END OF STRIPE CUSTOMERS
+
+
+  // ** STRIPE SUBSCRIPTIONS COLLECTION + VALIDATION FUNCTIONS
+  match /invoices/{invoiceId} {
+    allow read: if isOwnerOrAdmin(request, resource.data.subscriberUid) || isOwner(request, resource.data.creatorUid);
+    allow write: if false;
+  }
+  // ** END OF STRIPE SUBSCRIPTIONS
+
+
+  // ** TERMS OF SERVICE COLLECTION + VALIDATION FUNCTIONS
+  match /termsOfService/{termId} {
+    allow read: if isSignedIn(request);
+  }
+  // ** END OF TERMS OF SERVICE
+
+
+  // ** USER AGREEMENTS COLLECTION + VALIDATION FUNCTIONS
+  match /userAgreements/{agreementId} {
+    allow read: if isSignedIn(request);
+    allow write: if isSignedIn(request);
+  }
+  // ** END OF USER AGREEMENTS
+
+
+  // ** REPORTS COLLECTION + VALIDATION FUNCTIONS
+  match /reports/{reportId} {
+    allow read, write: if false;
+  }
+  // ** END OF REPORTS
+
+
+  // ** BLACKLIST COLLECTION + VALIDATION FUNCTIONS
+  match /blacklist/{blacklistId} {
+    allow read: if isSignedIn(request);
+    allow write: if false;
+  }
+  // ** END OF BLACKLIST
+
+
+  // ** CREATORS APPEALS COLLECTION + VALIDATION FUNCTIONS
+  function isValidCreatorAppealObject(req) {
+    let hasRequiredKeys = req.resource.data.keys().hasAll([
+    'reelId',
+    'appealedAt',
+    'creatorId'
+    ]);
+
+    let hasValidTypes = 
+    req.resource.data.reelId is string &&
+    isValidTimestampField(req.resource.data.appealedAt) &&
+    req.resource.data.creatorId is string &&
+    (!('comment' in req.resource.data) || req.resource.data.comment is string);
+
+    // Only allow these specific fields
+    let hasOnlyValidKeys = req.resource.data.keys().hasOnly([
+    'reelId',
+    'comment',
+    'appealedAt',
+    'creatorId'
+    ]);
+
+  // The creatorId in the document must match the authenticated user's ID
+    let isCreatorIdValid = req.resource.data.creatorId == req.auth.uid;
+
+    // Validate optional comment length - max 120 characters
+    let isCommentValid = !('comment' in req.resource.data) || 
+    req.resource.data.comment.size() <= 120;
+
+    return hasRequiredKeys && 
+    hasValidTypes && 
+    hasOnlyValidKeys && 
+    isCreatorIdValid && 
+    isCommentValid;
+  }
+
+  match /creators-appeals/{appealId} {
+    allow read: if isOwnerOrAdmin(request, resource.data.creatorId);
+    allow create: if isRole(request, 'creator') && isValidCreatorAppealObject(request);
+    allow update: if false;  // Appeals cannot be updated once submitted
+    allow delete: if false;  // Appeals cannot be deleted
+  }
+}
+}

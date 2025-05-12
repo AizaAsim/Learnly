@@ -1,0 +1,15 @@
+{
+  "paymentMethod": {
+    "emptyText": "You don’t currently have any payment methods.",
+    "addText": "Add Payment Method",
+    "futureSubscriptionsWarning": "All future subscription payments will be charged to this card.",
+    "addButton": "Add Card",
+    "menu": {
+      "setDefault": "Set Default",
+      "delete": "Delete"
+    },
+    "activeLable": "(Active)",
+    "expire": "Expiration",
+    "change_card": "Change"
+  }
+}

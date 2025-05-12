@@ -1,0 +1,6 @@
+{
+    "accountRecovery": {
+        "description": "Add a recovery option to secure your account.",
+        "button": "Secure Your Account"
+    }
+}

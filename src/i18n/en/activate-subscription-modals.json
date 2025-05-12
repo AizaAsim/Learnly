@@ -1,0 +1,50 @@
+{
+  "activateSubscription": {
+    "button": "Activate Subscription",
+    "manageSubscription": "Manage Subscription",
+
+    "setPrice": {
+      "title": "Set a Fee For Learners",
+      "description": "Set a monthly subscription price between $4.99 and $49.99 USD.",
+      "input_label": "$",
+      "input_sublabel": "Per Month",
+      "input_placeholder": "4.99 USD",
+      "button_continue": "Continue",
+      "toast_sucess_message": "Subscription price updated.",
+      "button_changePrice": "Change Price",
+      "note": "Learn about our <span>pricing guidelines</span>.",
+      "input_errors": {
+        "required": "Price is required",
+        "min": "The minimum price is ${{price}}",
+        "max": "The maximum price is ${{price}}",
+        "unallowed_decimals": "Only .99 and .00 decimals allowed"
+      },
+      "price_update_note": "Price changes will only apply to new subscriptions. Existing learners will continue to renew at their original rate.",
+      "learn_more": " Learn more about our <underline>pricing guidelines</underline>."
+    },
+
+"countriesSupported_modal": {
+      "title": "Select Your Country",
+      "description":"<strong>Learnly™</strong> supports educators payouts in 44 countries through <strong>Stripe® —</strong> choose your country to continue:"
+    },
+
+    "addPayoutMethod_modal": {
+      "title": "Add a Payout Method",
+      "description": "Connect your <strong>Learnly™</strong> account with <strong>Stripe®</strong> to add a payout method so you can get paid. This only takes a few minutes!",
+      "button": "Continue to Stripe®"
+    },
+
+    "verifyEmail_modal": {
+      "title": "Verify Email",
+      "description": "You need to verify your email address before activate your subscription.",
+      "button": "Send Verification"
+    }
+  },
+
+  "subscritionActivated": {
+    "title": "Subscription Activated!",
+    "description": "Congratulations! Your profile is now publicly visible and you're ready to start getting learners.",
+    "copied_button": "Link Copied",
+    "copy_button": "Copy Profile Link"
+  }
+}

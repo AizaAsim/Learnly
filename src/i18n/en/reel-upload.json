@@ -1,0 +1,59 @@
+{
+  "reelUpload_error_wrongSize": "Maximum file size {{maxSize}} GB",
+  "reelUpload_error_unsupportedType": "File Format Not Supported",
+  "reelUpload_error_wrongVideoDuration": "Video is too Long",
+  "reelUpload_error_generic": "Something went wrong",
+  "reelUpload_error_lowVideoDuration": "Please upload a video that is at least {{videoDuration}} seconds long.",
+  "reelUpload_error_wrongAspectRatio": "Please upload a video with a {{aspectRatio}} aspect ratio.",
+  "reelUpload_error_blacklisted": "EduClip blacklisted previously",
+
+  "reelUpload_modal_text_title": "Add a EduClip",
+  "reelUpload_modal_maxSize": "Max Size: {{maxSize}}GB",
+  "reelUpload_modal_maxDuration": "Max Length: {{maxDuration}} minutes",
+
+  "reelUpload_button_upload": "Choose EduClip",
+  "reelUpload_button_cancel": "Cancel",
+  "reelUpload_button_preview": "Preview",
+  "reelUpload_button_edit_cover": "Edit Cover",
+  "reelUpload_button_save": "Save",
+  "reelUpload_button_next": "Next",
+  "reelUpload_button_changeReel": "Change EduClip",
+  "reelUpload_button_schedule": "Schedule",
+  "reelUpload_button_publish": "Publish",
+  "reelUpload_button_saveAsDraft": "Save as Draft",
+  "reelUpload_button_saveDetails": "Save Details",
+  "reelUpload_button_discard": "Discard",
+  "reelUpload_status_preparing": "Preparing EduClip",
+  "reelUpload_limitOver": "Limit Reached",
+
+  "reelUpload_addDetails_title": "Add Details",
+
+  "reelUpload_editDetails_title": "Edit Details",
+  "reelUpload_editDetails_description": "Description",
+  "reelUpload_editDetails_link": "Add Link",
+
+  "reelUpload_editDetails_description_error": "Characters Limit Reached",
+  "reelUpload_editDetails_link_error": "Invalid Link",
+
+  "reelUpload_schedulePost_title": "Schedule Post",
+  "reelUpload_schedulePost_subtitle": "Choose a time during the next {{limit}} days",
+  "reelUpload_button_resetScheduleTime": "Reset",
+  "reelUpload_scheduleDate_placeholder": "yyyy/mm/dd",
+  "reelUpload_scheduleTime_placeholder": "12:00 AM",
+
+  "reelUpload_chooseDate_title": "Choose a Date",
+
+  "reelUpload_chooseTime_title": "Choose a Time",
+
+  "reelUpload_postLive_title": "Your Post is Live",
+
+  "reelUpload_discardPost_title": "Discard Post?",
+  "reelUpload_discardPost_subtitle": "Your changes won’t be saved.",
+
+  "reelUpload_schedule_error_past": "Please select a future date and time",
+  "reelUpload_schedule_error_limit": "EduClip can be scheduled only within next {{limit}} days",
+  "reelUpload_schedulePost_success": "Post scheduled",
+  "reelUpload_draft_saved_success": "Post saved to drafts",
+
+  "reelUpload_editCover": "Edit Cover"
+}
